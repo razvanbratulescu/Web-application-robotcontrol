@@ -1,0 +1,124 @@
+<html>
+    <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  	<link rel="stylesheet" href='/static/style.css'/>
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<meta http-equiv="refresh" content="30" >
+        <title>Diploma Project</title>
+ 
+    </head>
+  <body>
+<style>
+body {
+  background-image: url('/static/i1.png');
+  background-repeat: no-repeat;
+  background-color:   #ff9999
+  background-attachment: fixed;
+  background-size: cover;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width:100px;
+  margin: 10px 16px;
+  cursor: pointer;
+}
+
+
+.button4 {border-radius: 16px;}
+
+
+.button2 {
+  background-color: #e1ede2; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button5 {border-radius: 50%;}
+
+
+</style>
+<p style="color: white" >Date/Time: <span id="datetime"></span></p>
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+</script>
+<h1 class="w3-center"; align="center"; style="color: white">ROBOX</h1>
+<div class="column">
+<h2 align="left"; style="color: white"> {{ dist }} cm </h2>
+<h2 align="left"; style="color: white"> {{ temp }} &deg;C</h2>
+<h2 align="left"; style="color: white"> {{ hum }} RH</h2>
+</div>
+	<div align="center">
+		<button class="button button4">
+		<a href="/forward" style="color: black"> Față</a>
+		</button>
+	</div>
+
+</div>
+<div align="center">
+<div class="column">
+<button class="button button4">
+<a href="/right" style="color: black"> Dreapta</a>
+</button>
+<button class="button2 button5">
+<a href="/stop" style="color: red"> Stop</a>
+</button>
+<button class="button button4">
+<a href="/left" style="color: black">Stânga</a>
+</button>
+</div>
+<div align="center">
+<div class="col-md-auto">
+<button class="button button4">
+<a href="/backward" style="color: black"> Spate</a>
+</button>
+</div>
+</div>
+<div class="w3-display-topright w3-padding">
+<br>
+<br>
+<h2 style ="color:white">Optiuni Extra</h2>
+<br>
+<div class="btn-group-vertical">
+<a href="/detection" target="blank"><button type="button" class="btn btn-primary btn-block"><strong style ="color: white">Detectie poza</strong></button></a>
+<a href="https://grafana.beia-telemetrie.ro/d/I5Hmd9_7z/project_rb?from=1652276590418&to=1652277490418&orgId=1" target="blank"><button type="button" class="btn btn-primary btn-block"> <strong style ="color: white"> Acces GRAFANA </strong> </button></a>
+</div>
+</div>
+<div align="center">
+<div class="column">
+        <br>
+        <a href="/r" ><button  class="btn btn-light""> <strong style ="color: black">POZĂ</strong> </button></a>
+	<a href="/detec" target="blank"><button class="btn btn-light""><strong style ="color: black">DETECȚIE</strong></button></a>
+	<a href="/" target="blank"><button class="btn btn-light""><strong style ="color: black">MĂSOARĂ</strong></button></a>
+</div>
+<br>
+<div align="center">
+<div class="column">
+ <h1 style ="color:white">Flux video</h1>
+        <img src="{{ url_for('video_feed') }}">
+</div> 
+</div>
+<div align="center">
+<div class="column">
+
+	<h1 style ="color:white">Ultima detecție</h1>
+        <img src="/static" style="border: 3px solid black"/>
+        <br>
+</body>
+</html>
